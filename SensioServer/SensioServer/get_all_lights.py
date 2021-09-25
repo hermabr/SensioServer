@@ -1,20 +1,42 @@
+import os
 import re
-import random
 import socket
+import traceback
 
-def get_socket_information(all_informations, tag):
-    get_informations = [x for x in all_informations if tag in str(x)]
+from SensioServer.Light import Light
+from SensioServer.Lights import Lights
+from SensioServer import save_lights
 
-    for info_byte_str in get_informations:
-        info_str = info_byte_str.decode("utf-8")
-        #  if info_str.split(" ")[0] == "SSN":
-        #      set_light(s, value_id, set_id, random.randint(0,100))
-        print(info_str)
+lights = {}
+
+
+def update_lights(lights, name, value_id, set_id):
+    if value_id not in lights:
+        lights[value_id] = {
+            "name": f"{name}-{len(lights)}",
+            "val": value_id,
+            "set": set_id,
+        }
+    elif set_id:
+        lights[value_id]["set"] = set_id
+
+
+def print_table(lights, row_names):
+    os.system("clear")
+    longest_items = [len(str(len(lights))) + 2] + [len(name) + 2 for name in row_names]
+    for row in lights.values():
+        for i, item in enumerate(row.values()):
+            longest_items[i + 1] = max(longest_items[i + 1], len(item))
+
+    format_row = "".join(["{:>" + str(length + 2) + "}" for length in longest_items])
+
+    print(format_row.format("", *row_names))
+    for i, row in enumerate(lights.values()):
+        print(format_row.format(i, *row.values()))
 
 
 def client_receive(s):
-    value_id = '53239'
-    set_id = '53287'
+    set_id = ""
 
     while True:
         try:
@@ -22,16 +44,49 @@ def client_receive(s):
 
             informations = re.findall(b"\x01(.*?)\x02", data)
 
-            get_socket_information(informations, "_Val")
-            get_socket_information(informations, "_SET")
-        #  lights.update_light(info_str.split()[1], info_str.split()[6])
+            if informations:
+                info_str = str(informations[0])
+                long_name = info_str.split()[2]
+                nicer_name = long_name[4:-4]
 
+                action_id = info_str.split()[1]
+
+                if "_SET" in info_str:
+                    set_id = action_id
+                elif "_Val" in info_str:
+                    print(action_id)
+                    update_lights(lights, nicer_name, action_id, set_id)
+                    set_id = ""
+
+                print_table(lights, ["Name", "Val", "Set"])
+
+        except KeyboardInterrupt:
+            if not any([light["set"] for light in lights.values()]):
+                os.system("clear")
+                input("You have not collected add the set ids. Press enter to continue")
+            elif input("Do you want to write and quit? (Y/n) ").lower() in ["y", ""]:
+                lights_object = Lights()
+                for light in lights.values():
+                    light = Light(light["val"], light["set"], light["name"])
+
+                    lights_object.add_light(light)
+                save_lights(lights_object)
+                break
+
+            print_table(lights, ["Name", "Val", "Set"])
         except Exception as e:
+            traceback.print_exception(type(e), e, e.__traceback__)
             print(f"Exception crash at client receive {e}")
 
+
 def set_light(s, value_id, set_id, value):
-    s.sendall(bytes(f'set_value {value_id} {int(float(value))}new_state {set_id} 0', 'utf-8'))
+    s.sendall(
+        bytes(
+            f"set_value {value_id} {int(float(value))}new_state {set_id} 0", "utf-8"
+        )
+    )
     print("Light set")
+
 
 def main():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -39,6 +94,8 @@ def main():
 
     #  set_light(s, value_id, set_id, 0)
     client_receive(s)
+
+    s.close()
 
 
 if __name__ == "__main__":
