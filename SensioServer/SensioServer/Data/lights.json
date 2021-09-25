@@ -1,0 +1,138 @@
+{
+    "py/object": "SensioServer.Lights.Lights",
+    "_lights": [
+        {
+            "py/object": "SensioServer.Light.Light",
+            "_value": 80,
+            "_value_id": "41236",
+            "_set_id": "41284",
+            "_group_name": "Wc1etgEntre-0-34"
+        },
+        {
+            "py/object": "SensioServer.Light.Light",
+            "_value": 80,
+            "_value_id": "57187",
+            "_set_id": "57235",
+            "_group_name": "EntreEntre-0-28"
+        },
+        {
+            "py/object": "SensioServer.Light.Light",
+            "_value": 0,
+            "_value_id": "49291",
+            "_set_id": "49339",
+            "_group_name": "VaskeromVaskerom-0-24"
+        },
+        {
+            "py/object": "SensioServer.Light.Light",
+            "_value": 55,
+            "_value_id": "45290",
+            "_set_id": "45338",
+            "_group_name": "Kjokken1Kj\u00f8kken-0-21"
+        },
+        {
+            "py/object": "SensioServer.Light.Light",
+            "_value": 55,
+            "_value_id": "47975",
+            "_set_id": "48023",
+            "_group_name": "Kj\u00f8kkenKj\u00f8kken-0-22"
+        },
+        {
+            "py/object": "SensioServer.Light.Light",
+            "_value": 90,
+            "_value_id": "55871",
+            "_set_id": "55919",
+            "_group_name": "Kj\u00f8kkenskapKj\u00f8kken-0-23"
+        },
+        {
+            "py/object": "SensioServer.Light.Light",
+            "_value": 3,
+            "_value_id": "54555",
+            "_set_id": "54603",
+            "_group_name": "StueStue-0-26"
+        },
+        {
+            "py/object": "SensioServer.Light.Light",
+            "_value": 90,
+            "_value_id": "58503",
+            "_set_id": "58551",
+            "_group_name": "StueStue-0-25"
+        },
+        {
+            "py/object": "SensioServer.Light.Light",
+            "_value": 80,
+            "_value_id": "50607",
+            "_set_id": "50655",
+            "_group_name": "TaktrappTrapp-0-30"
+        },
+        {
+            "py/object": "SensioServer.Light.Light",
+            "_value": 0,
+            "_value_id": "53239",
+            "_set_id": "53287",
+            "_group_name": "TrappveggTrapp-0-29"
+        },
+        {
+            "py/object": "SensioServer.Light.Light",
+            "_value": 80,
+            "_value_id": "37182",
+            "_set_id": "37230",
+            "_group_name": "Bad kjellerBad kjeller-0-38"
+        },
+        {
+            "py/object": "SensioServer.Light.Light",
+            "_value": 0,
+            "_value_id": "43974",
+            "_set_id": "44022",
+            "_group_name": "TrimromTrimrom-0-32"
+        },
+        {
+            "py/object": "SensioServer.Light.Light",
+            "_value": 80,
+            "_value_id": "51923",
+            "_set_id": "51971",
+            "_group_name": "KjellerstueKjellerstue-0-27"
+        },
+        {
+            "py/object": "SensioServer.Light.Light",
+            "_value": 27,
+            "_value_id": "33128",
+            "_set_id": "33176",
+            "_group_name": "ArthurArthur-0-39"
+        },
+        {
+            "py/object": "SensioServer.Light.Light",
+            "_value": 0,
+            "_value_id": "34497",
+            "_set_id": "34545",
+            "_group_name": "HermannHerman-0-40"
+        },
+        {
+            "py/object": "SensioServer.Light.Light",
+            "_value": 0,
+            "_value_id": "42605",
+            "_set_id": "42653",
+            "_group_name": "SovLauritzLauritz-0-33"
+        },
+        {
+            "py/object": "SensioServer.Light.Light",
+            "_value": 80,
+            "_value_id": "39867",
+            "_set_id": "39915",
+            "_group_name": "M.badlysHovedsov-0-36"
+        },
+        {
+            "py/object": "SensioServer.Light.Light",
+            "_value": 0,
+            "_value_id": "46659",
+            "_set_id": "46707",
+            "_group_name": "MastersovHovedsov-0-31"
+        },
+        {
+            "py/object": "SensioServer.Light.Light",
+            "_value": 0,
+            "_value_id": "38498",
+            "_set_id": "38546",
+            "_group_name": "Utelys inngangUtelys-0-35"
+        }
+    ]
+}
