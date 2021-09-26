@@ -33,7 +33,6 @@ class Light(object):
         return self._group_name
 
     def nice_short_name(self):
-        # return self.get_group_name() + ": " + str(self.get_value())
         return f"<L: {self._value:>3} '{self._group_name}'>"
 
     def get_json(self):

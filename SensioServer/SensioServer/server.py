@@ -4,7 +4,6 @@ import socket
 import re
 import atexit
 import threading
-import time
 import os
 
 from flask import Flask, request
@@ -72,11 +71,8 @@ def set_light():
     except Exception as e:
         print("Error with setting light:", e)
         os._exit(1)
-    # print("THIS IS NOT IMPLEMENTED!!")
 
-    return {
-        "status": "Success"
-    }, 200  # f"THIS IS NOT IMPLEMENTED!! Setting light value for {group_name} to {value}"
+    return {"status": "Success"}, 200
 
 
 def run():

@@ -79,20 +79,10 @@ def client_receive(s):
             print(f"Exception crash at client receive {e}")
 
 
-def set_light(s, value_id, set_id, value):
-    s.sendall(
-        bytes(
-            f"set_value {value_id} {int(float(value))}new_state {set_id} 0", "utf-8"
-        )
-    )
-    print("Light set")
-
-
 def main():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect(("192.168.0.4", 10023))
 
-    #  set_light(s, value_id, set_id, 0)
     client_receive(s)
 
     s.close()
